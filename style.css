@@ -1,0 +1,18 @@
+.grid-container{
+    margin:0px;
+    width:500px;
+    height:500px;
+    display:flex;
+    flex-direction: column;
+    /* align-content: stretch; */
+}
+.row{
+    display:flex;
+    flex-grow: 1;
+}
+.cell{
+    border-top: 1px solid rgb(156, 156, 156);
+    border-left: 1px solid rgb(156, 156, 156);
+    background-color:white;
+    flex-grow: 1;
+}
