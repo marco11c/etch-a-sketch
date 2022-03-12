@@ -9,8 +9,27 @@
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-    <button class="clear-grid-btn">clear</button>
-    <div class="grid-container"></div>
-
+    <div class="master-container">
+        <div class="controls-container">
+            <div class="color-picker-row tool-set-row">
+                <input class="color-picker" type="color">
+                <span class="color-display-value tool-text"></span>
+            </div>
+                <div class="tool-set-row-2 tool-set-row">
+                <div class="pen-selector selector-btn"><img class="icon" src="/images/penicon.png"></div>
+                <div class="eraser-selector selector-btn"><img class="icon" src="/images/erasericon.png"></div>
+            </div>
+                <div class="resize-slider-container">
+                <input class="resize-slider slider" type="range" min="2" max="80" value="64">
+                <span class="resize-slider-value-display tool-text"></span>
+            </div>
+            <button class="clear-grid-btn">Clear Canvas</button>
+        </div>
+        <div class="canvas-spacer canvas-spacer-1">
+            <div class="mouse-coordinates-display tool-text"><span class="mouse-x-display-value">MouseX:</span><br><span class="mouse-y-display-value">MouseY:</span></div>
+        </div>
+        <div class="grid-container"></div>
+        <div class="canvas-spacer canvas-spacer-2"></div>
+    </div>
 </body>
 </html>
