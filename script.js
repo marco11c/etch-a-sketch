@@ -90,7 +90,6 @@ function toggleGrid(switchValue){
         cells[i].style.borderLeft = switchValue;
     }
 }
-
 function convertToHex(str){
     var raw = str.match(/(\d+)/g);
     var hexr = parseInt(raw[0]).toString(16);
