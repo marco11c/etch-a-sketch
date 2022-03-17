@@ -9,27 +9,57 @@
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-    <div class="master-container">
+<div class="master-container">
+    <div class="hero-title"><img src="/images/etchasketchlogo.jpeg" class="hero-logo"></div>
+    <div class="main-container">
         <div class="controls-container">
+            <div class="tool-title">TOOLS</div>
+            <div class="tool-text tool-text-title">Color Picker</div>
             <div class="color-picker-row tool-set-row">
-                <input class="color-picker" type="color">
+                <input class="color-picker" type="color" title="Color Picker">
                 <span class="color-display-value tool-text"></span>
             </div>
                 <div class="tool-set-row-2 tool-set-row">
-                <div class="pen-selector selector-btn"><img class="icon" src="/images/penicon.png"></div>
-                <div class="eraser-selector selector-btn"><img class="icon" src="/images/erasericon.png"></div>
+                <div class="pen-selector selector-btn"><img class="icon" src="/images/penicon.png" title="Pen Tool"></div>
+                <div class="eraser-selector selector-btn"><img class="icon" src="/images/erasericon.png" title="Eraser Tool"></div>
             </div>
                 <div class="resize-slider-container">
-                <input class="resize-slider slider" type="range" min="2" max="80" value="64">
+                <input class="resize-slider slider" type="range" min="2" max="100" value="48">
                 <span class="resize-slider-value-display tool-text"></span>
             </div>
             <button class="clear-grid-btn">Clear Canvas</button>
         </div>
         <div class="canvas-spacer canvas-spacer-1">
-            <div class="mouse-coordinates-display tool-text"><span class="mouse-x-display-value">MouseX:</span><br><span class="mouse-y-display-value">MouseY:</span></div>
+            <div class="mouse-coordinates-display tool-text">
+                <span class="mouse-x-display-value mouse-pos-label">MouseX:</span>
+                <br>
+                <span class="mouse-y-display-value mouse-pos-label">MouseY:</span></div>
         </div>
         <div class="grid-container"></div>
         <div class="canvas-spacer canvas-spacer-2"></div>
+        <div class="controls-container-2 controls-container">
+            <div class="recent-colors-container">
+                <div class="tool-title">RECENT COLORS</div>
+                <div class="recent-colors-pallete"></div>
+            </div>
+            <div class="options-container">
+                <div class="tool-title options-title">OPTIONS</div>
+                <div class="options-list">
+                    <input type="checkbox" id="toggle-grid" title="Show Grid">
+                    <label for="grid" class="tool-text">Show Grid</label>
+                </div>
+            </div>
+            <div class="canvas-info-container tool-text">
+                <div class="canvas-size-label">Width: 600px <br> Height: 600px</div>
+                <div class="canvas-grid-label tool-text"></div>
+                <div class="xy-label-container tool-text">
+                    <span class="x-label"></span>
+                    <br>
+                    <span class="y-label"></span>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 </body>
 </html>
