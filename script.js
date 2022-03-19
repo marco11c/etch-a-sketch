@@ -2,6 +2,7 @@ let defaultColor = '#000000';
 const defaultSelectorColor = '#333333';
 const activeSelectorColor = '#4c90ff';
 let defaultSize = 48;
+let randomColor;
 let eraserActive = false;
 let penActive = true;
 const colorPicker = document.querySelector('.color-picker');
@@ -18,6 +19,7 @@ const xLabel = document.querySelector('.x-label');
 const yLabel = document.querySelector('.y-label');
 const recentColorsPallete = document.querySelector('.recent-colors-pallete');
 const gridOption = document.querySelector('#toggle-grid');
+const rainbowPenOption = document.querySelector('#toggle-rainbow-pen');
 const canvasGridLabel = document.querySelector('.canvas-grid-label');
 colorPicker.addEventListener('change', () => {colorValueLabel.innerHTML = colorPicker.value; updateRecentColors();});
 resizeSlider.addEventListener('change', () => {sliderValueDisplay.innerHTML = `${resizeSlider.value}x${resizeSlider.value} Grid`; canvasGridLabel.textContent = `Grid: ${resizeSlider.value}x${resizeSlider.value}`;});
@@ -57,9 +59,15 @@ function makeGrid(dimensions){
             let cell = document.createElement('div');
             cell.textContent = '';
             cell.classList.add('cell');
-            cell.addEventListener('click', function (e){penActive ? e.target.style.backgroundColor = colorPicker.value : e.target.style.backgroundColor = 'white'});
-            cell.addEventListener('mousedown', function (e){penActive ? e.target.style.backgroundColor = colorPicker.value : e.target.style.backgroundColor = 'white'});
-            cell.addEventListener('mouseover', function(e){if (mousePressed){penActive ? e.target.style.backgroundColor = colorPicker.value : e.target.style.backgroundColor = 'white';}})
+            // cell.addEventListener('click', function (e){penActive ? e.target.style.backgroundColor = colorPicker.value : e.target.style.backgroundColor = 'white'});
+            // cell.addEventListener('mousedown', function (e){penActive ? e.target.style.backgroundColor = colorPicker.value : e.target.style.backgroundColor = 'white'});
+            // cell.addEventListener('mouseover', function(e){if (mousePressed){penActive ? e.target.style.backgroundColor = colorPicker.value : e.target.style.backgroundColor = 'white';}})
+            cell.addEventListener('click', draw);
+            cell.addEventListener('mousedown', draw);
+            cell.addEventListener('mouseover', (e)=>{if (mousePressed){
+                    draw(e);
+                }
+            });
             cell.addEventListener('mouseover', function(e){xMouseLabel.innerHTML = `MouseX: ${gridItems[rowsArray.indexOf(e.target.closest('.row'))].indexOf(e.target)+1}`; xLabel.textContent = `X: ${gridItems[rowsArray.indexOf(e.target.closest('.row'))].indexOf(e.target)+1}`; })
             if (gridOption.checked){
                 cell.style.borderTop = '1px solid rgb(210,210,210)';
@@ -88,6 +96,28 @@ function toggleGrid(switchValue){
     for (i=0; i<cells.length; i++){
         cells[i].style.borderTop = switchValue;
         cells[i].style.borderLeft = switchValue;
+    }
+}
+function drawInRainbow(e){
+    let r = Math.floor(Math.random()*255)+1;
+    let g = Math.floor(Math.random()*255)+1;
+    let b = Math.floor(Math.random()*255)+1;
+    randomColor = `rgb(${r},${g},${b})`;
+    e.target.style.backgroundColor = randomColor;
+}
+
+function draw(e){
+    //chekck what tool is active(true) - pen, eraser, rainbowPen?
+    switch(true){
+        case (rainbowPenOption.checked&&penActive):
+            drawInRainbow(e);
+        break;
+        case penActive:
+            e.target.style.backgroundColor = colorPicker.value;
+            break;
+        case eraserActive:
+            e.target.style.backgroundColor = 'white';
+            break;
     }
 }
 function convertToHex(str){

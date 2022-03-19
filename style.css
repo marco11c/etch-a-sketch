@@ -29,7 +29,7 @@ body{
     flex-direction:column;
     background-color:#333333;
     padding:4px;
-    row-gap: 14px;
+    row-gap: 20px;
     width:110px;
 
 }
@@ -157,7 +157,7 @@ body{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    row-gap: 2px;;
+    row-gap: 8px;;
     background-color: #333333;
     padding: 4px;
 }
